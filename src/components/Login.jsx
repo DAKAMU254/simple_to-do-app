@@ -9,9 +9,11 @@ export default function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const success = login(email, password);
-    if (!success) {
-      setError('Invalid credentials. Try user@example.com / password');
+    const result = login(email, password); // Expecting an object with success and message
+    if (!result.success) {
+      setError(result.message);
+    } else {
+      setError(''); // Clear error on successful login
     }
   };
 
